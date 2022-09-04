@@ -153,7 +153,15 @@ copy /y "$(SolutionDir)External\opencv\bin\opencv_videoio_msmf460_64%option%.dll
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ComplexNumber.cpp" />
+    <ClCompile Include="Converter.cpp" />
+    <ClCompile Include="Mapper.cpp" />
     <ClCompile Include="JuriaSet.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ComplexNumber.h" />
+    <ClInclude Include="Converter.h" />
+    <ClInclude Include="Mapper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

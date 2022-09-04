@@ -3,10 +3,24 @@
 
 #include <iostream>
 #include <opencv2/opencv.hpp>
+#include "Converter.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int resolution = 1000;
+    cv::Mat m(resolution * 2 + 1, resolution * 2 + 1, CV_8UC3);
+
+    Converter converter(Mapper(ComplexNumber(-0.7, -0.3)));
+    for (int i = -resolution; i <= resolution; i++)
+    {
+        for (int j = -resolution; j <= resolution; j++)
+        {
+            m.at<cv::Vec3b>(j + resolution, i + resolution)
+                = converter.Convert(ComplexNumber(i * 2.0 / resolution, j * 2.0 / resolution));
+        }
+    }
+    
+    cv::imwrite("result.png", m);
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
